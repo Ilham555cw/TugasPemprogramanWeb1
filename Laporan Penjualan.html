@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Penjualan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+            font-size: 28px;
+        }
+
+        /* Styling Table */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            min-width: 600px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f1f7f9;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Styling Canvas */
+        #chartContainer {
+            margin: 30px auto;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            h2 {
+                font-size: 24px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            canvas {
+                max-width: 100%;
+                height: auto !important;
+            }
+
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Laporan Penjualan Tahun 2022 & 2023</h2>
+    
+    <!-- Tabel Laporan -->
+    <div class="table-container">
+        <table>
+            <tr>
+                <th rowspan="2">Tahun</th>
+                <th colspan="12">Bulan</th>
+            </tr>
+            <tr>
+                <th>Januari</th>
+                <th>Februari</th>
+                <th>Maret</th>
+                <th>April</th>
+                <th>Mei</th>
+                <th>Juni</th>
+                <th>Juli</th>
+                <th>Agustus</th>
+                <th>September</th>
+                <th>Oktober</th>
+                <th>November</th>
+                <th>Desember</th>
+            </tr>
+            <tr>
+                <td>2022</td>
+                <td>4.017</td>
+                <td>6.135</td>
+                <td>7.091</td>
+                <td>5.841</td>
+                <td>5.036</td>
+                <td>4.547</td>
+                <td>3.467</td>
+                <td>3.970</td>
+                <td>6.313</td>
+                <td>3.595</td>
+                <td>9.207</td>
+                <td>5.945</td>
+            </tr>
+            <tr>
+                <td>2023</td>
+                <td>2.416</td>
+                <td>4.136</td>
+                <td>7.935</td>
+                <td>8.004</td>
+                <td>9.505</td>
+                <td>5.026</td>
+                <td>6.108</td>
+                <td>6.343</td>
+                <td>9.404</td>
+                <td>9.280</td>
+                <td>9.287</td>
+                <td>8.689</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Grafik Penjualan -->
+    <div id="chartContainer">
+        <canvas id="laporanChart"></canvas>
+    </div>
+
+    <script>
+        // Konfigurasi Grafik Chart.js
+        const ctx = document.getElementById('laporanChart').getContext('2d');
+        const laporanChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Januari', 'Februari', 'Maret', 'April', 
+                    'Mei', 'Juni', 'Juli', 'Agustus', 
+                    'September', 'Oktober', 'November', 'Desember'
+                ],
+                datasets: [
+                    {
+                        label: 'Penjualan 2022',
+                        data: [4017, 6135, 7091, 5841, 5036, 4547, 3467, 3970, 6313, 3595, 9207, 5945],
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Penjualan 2023',
+                        data: [2416, 4136, 7935, 8004, 9505, 5026, 6108, 6343, 9404, 9280, 9287, 8689],
+                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Diagram Batang Penjualan 2022 dan 2023',
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Jumlah Penjualan'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Bulan'
+                        }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeInOutBounce'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
