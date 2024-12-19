@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Section</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .skills-section {
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .skills-section p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: #dfe6e9;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill {
+            margin-bottom: 25px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-title span {
+            font-size: 1rem;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            height: 100%;
+            background: linear-gradient(90deg, #81ecec, #00cec9);
+            width: 0;
+            transition: width 1.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar:hover .progress {
+            background: linear-gradient(90deg, #74b9ff, #0984e3);
+        }
+
+        .progress.animate {
+            width: var(--progress);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-section {
+                padding: 20px;
+            }
+
+            .skills-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .skills-section p {
+                font-size: 0.9rem;
+            }
+
+            .skill-title span {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="skills-section">
+        <h2>My Skills</h2>
+        <p>Berikut adalah keahlian yang saya kuasai dalam pemprograman web</p>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span>HTML</span>
+                <span>90%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="--progress: 90%;"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span>CSS</span>
+                <span>85%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="--progress: 85%;"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-title">
+                <span>JavaScript</span>
+                <span>75%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="--progress: 75%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const progressBars = document.querySelectorAll(".progress");
+            progressBars.forEach(bar => {
+                bar.classList.add("animate");
+            });
+        });
+    </script>
+</body>
+</html>
