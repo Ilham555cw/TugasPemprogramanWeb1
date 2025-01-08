@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilham Cahyo W</title>
+    <link rel="stylesheet" href="StyleSertifikat.css">
+</head>
+<body>
+    <div class="filter-buttons">
+        <button onclick="filterGallery('all')">Semua</button>
+        <button onclick="filterGallery('html')">HTML</button>
+        <button onclick="filterGallery('css')">CSS</button>
+        <button onclick="filterGallery('javascript')">JavaScript</button>
+    </div>
+
+    <div class="container">
+        <main class="grid">
+            <article data-category="html">
+                <img src="Sertifikat HTML.jpeg" width="300px" height="300px">
+                <div class="conten">
+                    <h2>Sertifikat HTML</h2>
+                    <p>Sertifikat Ini Didapat Dari Aplikasi Sololearn</p>
+                </div>
+            </article>
+            <article data-category="css">
+                <img src="Sertifikat CSS.jpeg" width="300px" height="300px">
+                <div class="conten">
+                    <h2>Sertifikat CSS</h2>
+                    <p>Sertifikat Ini Didapat Dari Aplikasi Sololearn</p>
+                </div>
+            </article>
+            <article data-category="javascript">
+                <img src="Sertifikat Javascript.jpeg" width="300px" height="300px">
+                <div class="conten">
+                    <h2>Sertifikat Javascript</h2>
+                    <p>Sertifikat Ini Didapat Dari Aplikasi Sololearn</p>
+                </div>
+            </article>
+            <article data-category="javascript">
+                <img src="Sertifikat Javascript Intermediate.jpg" width="300px" height="300px">
+                <div class="conten">
+                    <h2>Sertifikat Javascript Intermediate</h2>
+                    <p>Sertifikat Ini Didapat Dari Aplikasi Sololearn</p>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        function filterGallery(category) {
+            const articles = document.querySelectorAll('.grid > article');
+
+            articles.forEach(article => {
+                if (category === 'all' || article.getAttribute('data-category') === category) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
